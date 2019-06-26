@@ -1,0 +1,64 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class shurikenController : MonoBehaviour
+{
+    private float change_in_x, change_in_z;
+    private Rigidbody rb;
+    public float move_speed;
+
+
+    public Vector2 startPos;
+    public Vector2 direction;
+    public bool directionChosen;
+
+    // Use this for initialization
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.touches[0];
+
+            Debug.Log("ilk if e giriyor.");
+
+
+            Vector3 touchPos = Camera.main.ScreenToViewportPoint(touch.position);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                startPos = touch.position;
+                directionChosen = false;
+
+            }
+
+            else if (touch.phase == TouchPhase.Moved)
+            {
+
+                // direction = touch.position - startPos;
+                direction = Input.touches[0].deltaPosition.normalized;
+                move_speed = Input.touches[0].deltaPosition.magnitude / Input.touches[0].deltaTime;
+                // rb.velocity = new Vector3(direction.x/25, rb.velocity.y, direction.y/25);
+                transform.position = transform.position + new Vector3(direction.x/5 , rb.velocity.y, direction.y /5);
+
+
+            }
+
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                rb.velocity = Vector3.zero;
+               
+            }
+
+           
+            
+        }
+    }
+}
