@@ -27,7 +27,7 @@ public class shurikenController : MonoBehaviour
         {
             Touch touch = Input.touches[0];
 
-            Debug.Log("ilk if e giriyor.");
+           // Debug.Log("ilk if e giriyor.");
 
 
             Vector3 touchPos = Camera.main.ScreenToViewportPoint(touch.position);
@@ -46,7 +46,7 @@ public class shurikenController : MonoBehaviour
                 direction = Input.touches[0].deltaPosition.normalized;
                 move_speed = Input.touches[0].deltaPosition.magnitude / Input.touches[0].deltaTime;
                 // rb.velocity = new Vector3(direction.x/25, rb.velocity.y, direction.y/25);
-                transform.position = transform.position + new Vector3(direction.x/5 , rb.velocity.y, direction.y /5);
+                transform.position = transform.position + new Vector3(direction.x/5 , rb.velocity.y, direction.y/5);
 
 
             }
