@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 public class shurikenController : MonoBehaviour
 {
     private float change_in_x, change_in_z;
@@ -14,10 +14,21 @@ public class shurikenController : MonoBehaviour
     public Vector2 direction;
     public bool directionChosen;
 
+    private float sensitivity;
+
+    public Sensitivity loadSens;
     // Use this for initialization
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+         /*Sensitivity savedSens = new Sensitivity();
+
+         savedSens.LoadSensitivity();
+
+         sensitivity = 7+savedSens.sensVar;*/
+
+       
     }
 
     // Update is called once per frame

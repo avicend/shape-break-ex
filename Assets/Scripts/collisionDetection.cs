@@ -7,6 +7,7 @@ public class collisionDetection : MonoBehaviour
     private float width;
     private float height;
     private float depth;
+    
 
     private bool debugged=false;
 
@@ -21,6 +22,11 @@ public class collisionDetection : MonoBehaviour
 
     private bool collided = false;
 
+    AudioSource audio;
+    public AudioClip ChopSound;
+    public float volume;
+
+    
    
 
     // Start is called before the first frame update
@@ -38,8 +44,10 @@ public class collisionDetection : MonoBehaviour
         collideDistance_y = ((player_height / 2) + (height / 2));
         collideDistance_z = ((player_depth / 2) + (depth / 2));
 
-        
-        
+
+        audio = GetComponent<AudioSource>();
+
+       
 
     }
 
@@ -66,6 +74,8 @@ public class collisionDetection : MonoBehaviour
                   
                 }
 
+               
+                
 
                 transform.position = transform.position + collisionDirection()*Time.deltaTime;
                 transform.position = transform.position + new Vector3(0,100*Time.smoothDeltaTime,0);
@@ -73,6 +83,9 @@ public class collisionDetection : MonoBehaviour
                                  -player.transform.rotation.eulerAngles.y * Time.deltaTime,
                                  -player.transform.rotation.eulerAngles.z * Time.deltaTime);
                 collided = true;
+
+                
+                audio.PlayOneShot(ChopSound, volume);
                 //Destroy(gameObject);
                 StartCoroutine(WaitAndDestroy(2));
 
@@ -97,7 +110,11 @@ public class collisionDetection : MonoBehaviour
         }
         else if (gameObject.tag == "unbreakableCube")
         {
-            Debug.Log("game over");
+            if (distanceDelta <= collideDistance_x || distanceDelta <= collideDistance_y || distanceDelta <= collideDistance_z)
+            {
+                Debug.Log("game over");
+                audio.PlayOneShot(ChopSound, volume);
+            }
         }
 
         
@@ -113,6 +130,7 @@ public class collisionDetection : MonoBehaviour
 
     private IEnumerator WaitAndDestroy(float second)
     {
+        
         yield return new WaitForSeconds(second);
         Destroy(gameObject);
         
