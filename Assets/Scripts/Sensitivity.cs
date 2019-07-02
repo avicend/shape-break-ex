@@ -10,9 +10,10 @@ public class Sensitivity : MonoBehaviour
     public Slider sensitivitySlider;
     public void SaveSensitivity()
     {
-
+        
         sensVar = sensitivitySlider.value;
         SaveSystem.SaveSens(this);
+        Debug.Log("Slider value:"+sensVar);
         
     }
 

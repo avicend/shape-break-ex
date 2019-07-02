@@ -91,9 +91,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3dc23c55402db41b6544c8b6b6d3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 8421623719216614141, guid: 68e3f018dca60c144b02ffdcd88c50a5, type: 3}
   ChopSound: {fileID: 8300000, guid: 3f26b790ba5983a4da2a00ddbdf16ecb, type: 3}
   volume: 0.1
+  gameOverCanvas: {fileID: 1957986254440054621, guid: 538d3827d74c5114bb587e80219b2704,
+    type: 3}
 --- !u!82 &7535855190041746663
 AudioSource:
   m_ObjectHideFlags: 0

@@ -22,6 +22,13 @@ public class scenes : MonoBehaviour
         tapSound.PlayOneShot(clickSound, volume);
         
         SceneManager.LoadScene("Level1",LoadSceneMode.Single);
+        
+    }
+
+    public void LoadMainMenu()
+    {
+        tapSound.PlayOneShot(clickSound, volume);
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
     public void CloseGame()

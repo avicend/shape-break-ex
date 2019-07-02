@@ -14,22 +14,32 @@ public class shurikenController : MonoBehaviour
     public Vector2 direction;
     public bool directionChosen;
 
-    private float sensitivity;
+    private float sensitivity = 5f;
 
     public Sensitivity loadSens;
-    // Use this for initialization
+
+
+    
+
+
+    // Used for initialization
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-         /*Sensitivity savedSens = new Sensitivity();
+         Sensitivity savedSens = new Sensitivity();
 
          savedSens.LoadSensitivity();
 
-         sensitivity = 7+savedSens.sensVar;*/
+         sensitivity = 8-(4+savedSens.sensVar);
 
-       
+        Debug.Log("Sensitivity:" + sensitivity);
+
+        
     }
+
+
+
 
     // Update is called once per frame
     private void Update()
@@ -57,7 +67,7 @@ public class shurikenController : MonoBehaviour
                 direction = Input.touches[0].deltaPosition.normalized;
                 move_speed = Input.touches[0].deltaPosition.magnitude / Input.touches[0].deltaTime;
                 // rb.velocity = new Vector3(direction.x/25, rb.velocity.y, direction.y/25);
-                transform.position = transform.position + new Vector3(direction.x/5 , rb.velocity.y, direction.y/5);
+                transform.position = transform.position + new Vector3(direction.x/sensitivity , rb.velocity.y, direction.y/sensitivity);
 
 
             }
@@ -72,4 +82,6 @@ public class shurikenController : MonoBehaviour
             
         }
     }
+
+    
 }

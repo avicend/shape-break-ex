@@ -26,6 +26,9 @@ public class collisionDetection : MonoBehaviour
     public AudioClip ChopSound;
     public float volume;
 
+    public GameObject gameOverCanvas;
+
+
     
    
 
@@ -47,7 +50,7 @@ public class collisionDetection : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
 
-       
+        Time.timeScale = 1f;
 
     }
 
@@ -114,6 +117,11 @@ public class collisionDetection : MonoBehaviour
             {
                 Debug.Log("game over");
                 audio.PlayOneShot(ChopSound, volume);
+
+                Time.timeScale = 0f;
+
+                gameOverCanvas.SetActive(true);
+                player.SetActive(false);
             }
         }
 
@@ -136,4 +144,6 @@ public class collisionDetection : MonoBehaviour
         
         
     }
+
+    
 }
