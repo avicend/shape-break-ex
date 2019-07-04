@@ -14,7 +14,7 @@ public class shurikenController : MonoBehaviour
     public Vector2 direction;
     public bool directionChosen;
 
-    private float sensitivity = 5f;
+    private float sensitivity = 7f;
 
     public Sensitivity loadSens;
 
@@ -31,7 +31,7 @@ public class shurikenController : MonoBehaviour
 
          savedSens.LoadSensitivity();
 
-         sensitivity = 8-(4+savedSens.sensVar);
+         sensitivity = 12-(4+savedSens.sensVar);
 
         Debug.Log("Sensitivity:" + sensitivity);
 
@@ -44,6 +44,14 @@ public class shurikenController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        pos.x = Mathf.Clamp01(pos.x);
+       // pos.y = Mathf.Clamp01(pos.y);
+
+
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
+        
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.touches[0];

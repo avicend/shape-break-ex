@@ -12,6 +12,8 @@ public class scenes : MonoBehaviour
     public GameObject MainMenu;
     public GameObject SettingsMenu;
 
+    public GameObject breakableCube;
+
     void Start()
     {
         tapSound = GetComponent<AudioSource>();
@@ -24,6 +26,17 @@ public class scenes : MonoBehaviour
         SceneManager.LoadScene("Level1",LoadSceneMode.Single);
         
     }
+
+    public void LoadLeve2()
+    {
+
+        tapSound.PlayOneShot(clickSound, volume);
+
+        SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+
+    }
+
+
 
     public void LoadMainMenu()
     {
@@ -49,6 +62,11 @@ public class scenes : MonoBehaviour
         tapSound.PlayOneShot(clickSound, volume);
         MainMenu.SetActive(false);
         SettingsMenu.SetActive(true);
+    }
+
+     public void ToggleMute()
+    {
+        AudioListener.pause = !AudioListener.pause;
     }
 
 }
